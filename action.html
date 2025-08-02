@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Or Join Meeting</title>
+    <link rel="stylesheet" href="./public//assets/css/style.css">
+    <link rel="stylesheet" href="./public//assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body style="padding-top: 3.5rem;">
+    <nav class="navbar navbar-expand-md fixed-top">
+        <img src="./public/assets/images/google-meet-icon.png" class="logo" alt="Google Meet Logo">
+        <a href="#" class="navbar-brand text-dark">Google Meet</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">At a glance</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">At a glance</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">Plan and Price</a>
+                </li>
+            </ul>
+
+             <ul class="navbar-nav mr-0">
+                <li class="nav-item sign-in display-center">
+                    <a href="#" class="nav-link">Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-secondary btn-lg text-info font-weight-bold 
+                    join-meeting">
+                        Join the meeting
+                    </button>
+                </li>
+                <li class="nav-item">
+                     <button class="btn btn-info btn-lg text-light font-weight-bold new-meeting">
+                        Start a meeting
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="jumbotron h-100 d-flex">
+            <div class="container w-50">
+                <h1 style="font-size: 3rem;">Premium video meeting. Now it is available for free to everyone.</h1>
+                <p style="font-size: 20px;">We're redesign the Google Meet service secure business meetings and making it 
+                    free for everyone. Now you can create or join a meeting with just a few clicks.
+                </p>
+                <ul class="display-center justify-content-start">
+                    <li style="padding: 0;">
+                        <button class="btn btn-lg text-light font-weight-bold display-center new-meeting"
+                            style="background-color: #01796b; border-radius: 50px;">
+                            <span class="material-icons mr-2">video_call</span>
+                            <span>New Meeting</span>
+                        </button>
+                    </li>
+                     <li class="pl-3">
+                        <button class="btn btn-lg text-dark font-weight-bold display-center"
+                            style="background-color: #ffffff; border-radius: 50px;">
+                            <span class="material-icons mr-2">keyboard</span>
+                            <input type="text" placeholder="Enter a code or link"
+                             style="border: none;" class="enter-code">
+                        </button>
+                    </li>
+                    <li class="text-dark pt-4 font-weight-bold cursor-pointer pl-2 
+                    join-action">
+                        Join
+                    </li>
+                </ul>
+            </div>
+            <div class="container w-50">
+                <img src="./public/assets/images/google-meet-brand.png" alt="">
+            </div>
+        </div>
+    </main>
+
+    <footer style="background-color: #f8f9fa; padding: 20px; text-align: center; margin-top: 20px; border-top: 1px solid #ddd;">
+        <p style="margin: 0; font-size: 14px; color: #555;">© 2025 Google Meet. All rights reserved.</p>
+        <div style="margin-top: 10px;">
+            <a href="#" style="margin: 0 10px; color: #01796b; text-decoration: none;">Privacy Policy</a>
+            <a href="#" style="margin: 0 10px; color: #01796b; text-decoration: none;">Terms of Service</a>
+        </div>
+        <div style="margin-top: 10px;">
+            <a href="#" style="margin: 0 5px; color: #01796b; text-decoration: none;">
+                <span class="material-icons">facebook</span>
+            </a>
+            <a href="#" style="margin: 0 5px; color: #01796b; text-decoration: none;">
+                <span class="material-icons">twitter</span>
+            </a>
+            <a href="#" style="margin: 0 5px; color: #01796b; text-decoration: none;">
+                <span class="material-icons">linkedin</span>
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            $(document).on('click', '.join-meeting', function() {
+                $(".enter-code").focus();
+            });
+
+            $(document).on('click', '.join-action', function() {
+                var join_value = $(".enter-code").val();
+                var meetingUrl = window.location.origin + "?meetingId=" + join_value;
+                window.location.replace(meetingUrl);
+            });
+
+             $(document).on('click', '.new-meeting', function() {
+                var eight_d_value = Math.floor(Math.random() * 1000000000); 
+                var meetingUrl = window.location.origin + "?meetingId=" + eight_d_value;
+                window.location.replace(meetingUrl);
+            });
+        });
+    </script>
+</body>
+</html>
