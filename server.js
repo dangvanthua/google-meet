@@ -47,12 +47,24 @@ io.on('connection', (socket) => {
     });
   });
 
-    socket.on("SDPProcess", (data) => {
-        socket.to(data.to_connid).emit("SDPProcess", {
-            message: data.message,
-            from_connid: socket.id,
+  socket.on("SDPProcess", (data) => {
+      socket.to(data.to_connid).emit("SDPProcess", {
+          message: data.message,
+          from_connid: socket.id,
+      });
+  });
+
+  socket.on("disconnect", () => {
+    var disUser = userConnections.find((p) => p.connectionId === socket.id);
+    if(disUser) {
+      var meetingId = disUser.meeting_id;
+      userConnections = userConnections.filter((p) => p.connectionId !== socket.id);
+      var list = userConnections.filter((p) => p.meeting_id === meetingId);
+      list.forEach((p) => {
+        socket.to(p.connectionId).emit("inform_other_about_disconnected_user", {
+          connId: socket.id,
         });
-    });
-
-
+      });
+    }
+  })
 });
